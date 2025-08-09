@@ -1,12 +1,19 @@
 :root {
   --cell-size: 40px;
+  --accent-color: #ffaa33;
+  --primary-color: #007acc;
+  --background-color: #1e1e2f;
+  --text-color: #ddd;
+  --board-bg: #25263b;
+  --cell-bg: #2c2d46;
+  --cell-empty-bg: #1f2130;
 }
 
 body {
   font-family: system-ui, Segoe UI, Roboto, Arial, sans-serif;
   margin: 20px;
-  background-color: #1e1e2f;
-  color: #ddd;
+  background-color: var(--background-color);
+  color: var(--text-color);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,7 +36,7 @@ nav ul {
 }
 
 nav a {
-  color: #ffa500;
+  color: var(--accent-color);
   text-decoration: none;
   font-weight: bold;
 }
@@ -41,6 +48,8 @@ nav a:hover {
 main {
   width: 100%;
   max-width: 700px;
+  padding: 0 10px;
+  box-sizing: border-box;
 }
 
 .board-wrapper {
@@ -57,10 +66,10 @@ main {
   display: grid;
   grid-template-columns: repeat(10, var(--cell-size));
   gap: 4px;
-  background-color: #25263b;
+  background-color: var(--board-bg);
   padding: 12px;
   border-radius: 12px;
-  box-shadow: 0 0 15px #007accbb;
+  box-shadow: 0 0 15px var(--primary-color + "bb");
 }
 
 .cell {
@@ -69,26 +78,32 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #2c2d46;
+  background-color: var(--cell-bg);
   border-radius: 6px;
   border: 1px solid #444966;
   font-weight: 700;
   cursor: pointer;
   user-select: none;
-  color: #ddd;
-  transition: background-color 0.3s, box-shadow 0.3s;
+  color: var(--text-color);
+  transition: background-color 0.3s, box-shadow 0.3s, color 0.3s;
   box-sizing: border-box;
 }
 
 .cell.empty {
-  background-color: #1f2130;
+  background-color: var(--cell-empty-bg);
   color: #888aaa;
 }
 
 .cell:hover {
   background-color: #003e7e;
-  box-shadow: 0 0 10px #ffaa33;
+  box-shadow: 0 0 10px var(--accent-color);
   color: #fff;
+}
+
+.cell.suggest {
+  background-color: var(--accent-color) !important;
+  box-shadow: 0 0 12px 3px var(--accent-color + "aa");
+  color: #222 !important;
 }
 
 #log {
@@ -101,5 +116,48 @@ main {
   min-height: 40px;
   box-shadow: 0 2px 6px #000a20cc;
   user-select: none;
+}
+
+/* Pulsanti */
+button {
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 6px;
+  padding: 0.4em 0.8em;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.25s;
+  margin: 0 0.25em 0.5em 0;
+}
+
+button:hover:not(:disabled) {
+  background-color: #005fa3;
+}
+
+button:disabled {
+  background-color: #444966;
+  cursor: not-allowed;
+  color: #aaa;
+}
+
+/* Testi e link per pagine statiche */
+h1, h2, h3 {
+  color: var(--accent-color);
+  margin-top: 1em;
+}
+
+p {
+  line-height: 1.5;
+  margin-bottom: 1em;
+}
+
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
