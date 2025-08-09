@@ -6,7 +6,7 @@ Gioco web "Cento": un puzzle su griglia 10x10 con regole specifiche per inserire
 
 ## Avviso di copyright e uso
 
-© 2025 [TUO_NOME]. Tutti i diritti riservati.
+© 2025 Cristian Baldo. Tutti i diritti riservati.
 
 Questo progetto è reso pubblico esclusivamente per scopi dimostrativi e personali.
 
@@ -28,4 +28,4 @@ Per richieste di utilizzo commerciale o collaborazioni, contattami direttamente.
 
 ---
 
-Creato da [TUO_NOME]
+Creato da Cristian Baldo
