@@ -118,9 +118,8 @@ main {
   user-select: none;
 }
 
-/* Pulsanti */
 button {
-  background-color: var(--primary-color);
+  background-color: #cc7a00; /* arancione scuro */
   border: none;
   border-radius: 6px;
   padding: 0.4em 0.8em;
@@ -129,17 +128,21 @@ button {
   cursor: pointer;
   transition: background-color 0.25s;
   margin: 0 0.25em 0.5em 0;
+  box-shadow: 0 0 5px #cc7a00aa;
 }
 
 button:hover:not(:disabled) {
-  background-color: #005fa3;
+  background-color: #ffaa33; /* arancione acceso */
+  box-shadow: 0 0 12px #ffaa33cc;
 }
 
 button:disabled {
   background-color: #444966;
   cursor: not-allowed;
   color: #aaa;
+  box-shadow: none;
 }
+
 
 /* Testi e link per pagine statiche */
 h1, h2, h3 {
@@ -159,5 +162,51 @@ a {
 
 a:hover {
   text-decoration: underline;
+}
+
+/* Stile per select e input numerico */
+select, input[type="number"] {
+  background-color: #2c2d46;
+  border: 1px solid #444966;
+  border-radius: 6px;
+  color: #ddd;
+  padding: 6px 10px;
+  font-weight: 600;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  min-width: 140px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+select:hover, input[type="number"]:hover,
+select:focus, input[type="number"]:focus {
+  border-color: #ffaa33;
+  box-shadow: 0 0 8px #ffaa33aa;
+  color: #fff;
+}
+
+/* Label piccolo accanto a select e input */
+label.small {
+  font-size: 0.9rem;
+  color: #bbb;
+  user-select: none;
+  margin-right: 0.5em;
+}
+
+/* Riadattamento controllo timeout per input piccolo */
+input[type="number"] {
+  width: 90px;
+}
+
+/* Correzione spaziatura nel container dei controlli */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
 }
 
