@@ -1,4 +1,4 @@
-# Cento - Assistente di risoluzione (prototipo)
+# Cento games
 
 Gioco web "Cento": un puzzle su griglia 10x10 con regole specifiche per inserire numeri seguendo determinati movimenti.
 
