@@ -1,61 +1,80 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CentoGame</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CentoGame</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-    <!-- Header e menu -->
-    <header>
-        <h1>CentoGame</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Gioca</a></li>
-                <li><a href="chi-siamo.html">Chi siamo</a></li>
-                <li><a href="privacy.html">Privacy</a></li>
-                <li><a href="termini.html">Termini</a></li>
-            </ul>
-        </nav>
-    </header>
+  <!-- Header e menu -->
+  <header>
+    <h1>CentoGame</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Gioca</a></li>
+        <li><a href="chi-siamo.html">Chi siamo</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="termini.html">Termini</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <!-- Area di gioco -->
-    <main>
-        <div id="game-container">
-            <!-- Qui il gioco verrà caricato dallo script -->
-        </div>
-    </main>
+  <!-- Area di gioco -->
+  <main>
+    <div id="game-container">
+      <div id="board" style="display: grid; grid-template-columns: repeat(10, 40px); grid-gap: 4px; margin-bottom: 1rem;"></div>
+      <div id="log" style="margin-bottom: 1rem;">Pronto, puoi inserire il prossimo numero.</div>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 CentoGame. Tutti i diritti riservati.</p>
-    </footer>
+      <label for="timeout">Timeout (ms): </label>
+      <input id="timeout" type="number" value="6000" min="1000" max="60000" step="1000" />
 
-    <!-- Script del gioco -->
-    <script src="game.js"></script>
+      <label for="modeSelect">Modalità: </label>
+      <select id="modeSelect">
+        <option value="classic">Classico</option>
+        <option value="game">Gioco</option>
+      </select>
 
-    <!-- Script CMP di Google -->
-    <script async src="https://fundingchoicesmessages.google.com/i/pub-7718488126226367?ers=1" nonce="abc123"></script>
-    <script nonce="abc123">
-        (function() {
-            function signalGooglefcPresent() {
-                if (!window.frames['googlefcPresent']) {
-                    if (document.body) {
-                        const iframe = document.createElement('iframe');
-                        iframe.style.display = 'none';
-                        iframe.name = 'googlefcPresent';
-                        document.body.appendChild(iframe);
-                    } else {
-                        setTimeout(signalGooglefcPresent, 0);
-                    }
-                }
-            }
-            signalGooglefcPresent();
-        })();
-    </script>
+      <div style="margin-top: 1rem;">
+        <button id="cancelBtn" disabled>Annulla</button>
+        <button id="clearBtn">Pulisci</button>
+        <button id="suggestBtn">Suggerisci</button>
+        <button id="checkBtn">Controlla</button>
+        <button id="completeBtn">Completa</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 CentoGame. Tutti i diritti riservati.</p>
+  </footer>
+
+  <!-- Script del gioco -->
+  <script src="game.js"></script>
+
+  <!-- Script CMP di Google -->
+  <script async src="https://fundingchoicesmessages.google.com/i/pub-7718488126226367?ers=1" nonce="abc123"></script>
+  <script nonce="abc123">
+    (function() {
+      function signalGooglefcPresent() {
+        if (!window.frames['googlefcPresent']) {
+          if (document.body) {
+            const iframe = document.createElement('iframe');
+            iframe.style.display = 'none';
+            iframe.name = 'googlefcPresent';
+            document.body.appendChild(iframe);
+          } else {
+            setTimeout(signalGooglefcPresent, 0);
+          }
+        }
+      }
+      signalGooglefcPresent();
+    })();
+  </script>
 
 </body>
 </html>
+
 
