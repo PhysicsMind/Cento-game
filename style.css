@@ -1,60 +1,105 @@
 :root {
-  --cell-size: 48px;
+  --cell-size: 40px;
 }
 
 body {
-  font-family: system-ui, Segoe UI, Roboto, Arial;
+  font-family: system-ui, Segoe UI, Roboto, Arial, sans-serif;
   margin: 20px;
-  background: #1e1e2f;
+  background-color: #1e1e2f;
+  color: #ddd;
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: #ddd;
+  min-height: 100vh;
+}
+
+header, footer {
+  width: 100%;
+  max-width: 700px;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+nav a {
+  color: #ffa500;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+main {
+  width: 100%;
+  max-width: 700px;
+}
+
+.board-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 8px 0;
+  box-sizing: border-box;
+  overflow-x: auto;
+  margin-bottom: 1rem;
 }
 
 #board {
   display: grid;
-  grid-template-columns: repeat(10, minmax(0, 1fr));
+  grid-template-columns: repeat(10, var(--cell-size));
   gap: 4px;
-  margin-top: 0;
-  box-shadow: 0 0 15px #007accbb;
+  background-color: #25263b;
   padding: 12px;
   border-radius: 12px;
-  background: #25263b;
-  width: 100%;
-  max-width: 100vmin;
+  box-shadow: 0 0 15px #007accbb;
 }
 
 .cell {
-  aspect-ratio: 1 / 1;
+  width: var(--cell-size);
+  height: var(--cell-size);
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #2c2d46;
-  border: 1px solid #444966;
+  background-color: #2c2d46;
   border-radius: 6px;
+  border: 1px solid #444966;
   font-weight: 700;
   cursor: pointer;
   user-select: none;
-  font-size: clamp(10px, 3vw, 18px);
   color: #ddd;
   transition: background-color 0.3s, box-shadow 0.3s;
   box-sizing: border-box;
 }
+
 .cell.empty {
+  background-color: #1f2130;
   color: #888aaa;
-  background: #1f2130;
 }
-.cell.suggest {
-  outline: 3px solid rgba(255, 140, 0, 0.85);
-  background-color: #3a3b5c;
-  box-shadow: 0 0 8px 3px rgba(255, 140, 0, 0.7);
+
+.cell:hover {
+  background-color: #003e7e;
+  box-shadow: 0 0 10px #ffaa33;
   color: #fff;
 }
-.cell.fixed {
-  background: #004a99;
-  cursor: default;
-  color: #f0f0f0;
-  box-shadow: inset 0 0 8px #002f5b;
+
+#log {
+  background: #22293f;
+  border: 1px solid #555a7a;
+  border-radius: 6px;
+  padding: 8px;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  min-height: 40px;
+  box-shadow: 0 2px 6px #000a20cc;
+  user-select: none;
 }
 
