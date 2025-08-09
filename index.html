@@ -8,7 +8,6 @@
 </head>
 <body>
 
-  <!-- Header e menu -->
   <header>
     <h1>CentoGame</h1>
     <nav>
@@ -21,11 +20,11 @@
     </nav>
   </header>
 
-  <!-- Area di gioco -->
   <main>
     <div id="game-container">
+
       <div class="board-wrapper">
-      <div id="board" style="display: grid; grid-template-columns: repeat(10, 40px); grid-gap: 4px; margin-bottom: 1rem;"></div>
+        <div id="board" role="grid" aria-label="Tabellone 10 per 10"></div>
       </div>
 
       <div id="log" style="margin-bottom: 1rem;">Pronto, puoi inserire il prossimo numero.</div>
@@ -36,7 +35,7 @@
       <label for="modeSelect">Modalità: </label>
       <select id="modeSelect">
         <option value="classic">Classico</option>
-        <option value="game">Gioco</option>
+        <option value="game" selected>Gioco</option>
       </select>
 
       <div style="margin-top: 1rem;">
@@ -46,35 +45,60 @@
         <button id="checkBtn">Controlla</button>
         <button id="completeBtn">Completa</button>
       </div>
+
     </div>
   </main>
 
-  <!-- Footer -->
   <footer>
     <p>&copy; 2025 CentoGame. Tutti i diritti riservati.</p>
   </footer>
 
-  <!-- Script del gioco -->
-  <script src="game.js"></script>
+  <script>
+    const W = 10, H = 10;
+    const boardEl = document.getElementById('board');
+    const logEl = document.getElementById('log');
 
-  <!-- Script CMP di Google -->
-  <script async src="https://fundingchoicesmessages.google.com/i/pub-7718488126226367?ers=1" nonce="abc123"></script>
-  <script nonce="abc123">
-    (function() {
-      function signalGooglefcPresent() {
-        if (!window.frames['googlefcPresent']) {
-          if (document.body) {
-            const iframe = document.createElement('iframe');
-            iframe.style.display = 'none';
-            iframe.name = 'googlefcPresent';
-            document.body.appendChild(iframe);
-          } else {
-            setTimeout(signalGooglefcPresent, 0);
-          }
+    // Griglia dati: 0 = vuoto
+    let grid = Array.from({length:H}, () => Array(W).fill(0));
+
+    // Render semplice: crea 100 celle e le inserisce
+    function render(){
+      boardEl.innerHTML = '';
+      for(let y=0; y<H; y++){
+        for(let x=0; x<W; x++){
+          const cell = document.createElement('div');
+          cell.className = 'cell' + (grid[y][x] === 0 ? ' empty' : '');
+          cell.dataset.x = x;
+          cell.dataset.y = y;
+          cell.textContent = grid[y][x] === 0 ? '' : grid[y][x];
+          cell.addEventListener('click', onCellClick);
+          boardEl.appendChild(cell);
         }
       }
-      signalGooglefcPresent();
-    })();
+    }
+
+    // Gestione click: inserisce numero crescente in modalità "game"
+    function onCellClick(e){
+      const x = +e.currentTarget.dataset.x;
+      const y = +e.currentTarget.dataset.y;
+      const maxNum = Math.max(...grid.flat());
+      if(grid[y][x] !== 0){
+        logEl.textContent = 'Cella già occupata.';
+        return;
+      }
+      grid[y][x] = maxNum + 1;
+      logEl.textContent = `Inserito numero ${grid[y][x]} in cella (${x+1},${y+1}).`;
+      render();
+    }
+
+    // Bottoni solo per pulire
+    document.getElementById('clearBtn').addEventListener('click', () => {
+      grid = Array.from({length:H}, () => Array(W).fill(0));
+      logEl.textContent = 'Griglia pulita.';
+      render();
+    });
+
+    render();
   </script>
 
 </body>
