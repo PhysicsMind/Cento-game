@@ -1,7 +1,9 @@
 :root {
   --cell-size: 40px;
   --accent-color: #ffaa33;
+  --accent-color-alpha: #ffaa33aa;
   --primary-color: #007acc;
+  --primary-color-alpha: #007accbb;
   --background-color: #1e1e2f;
   --text-color: #ddd;
   --board-bg: #25263b;
@@ -69,7 +71,7 @@ main {
   background-color: var(--board-bg);
   padding: 12px;
   border-radius: 12px;
-  box-shadow: 0 0 15px var(--primary-color + "bb");
+  box-shadow: 0 0 15px var(--primary-color-alpha);
 }
 
 .cell {
@@ -102,7 +104,7 @@ main {
 
 .cell.suggest {
   background-color: var(--accent-color) !important;
-  box-shadow: 0 0 12px 3px var(--accent-color + "aa");
+  box-shadow: 0 0 12px 3px var(--accent-color-alpha);
   color: #222 !important;
 }
 
